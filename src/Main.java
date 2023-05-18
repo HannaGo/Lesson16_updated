@@ -1,17 +1,70 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import exceptions.WrongAccountException;
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+    public static void main(String[] args) throws Exception {
+        BankApplication bankApplication = new BankApplication();
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        try {
+            bankApplication.process("accountId000", 50, "USD");
+        }catch(exceptions.WrongAccountException WrongAccountException){
+            System.out.println("This account doesn't exist.");
+        }catch (exceptions.WrongCurrencyException WrongCurrencyException){
+            System.out.println("This account have another currency.");
+        }catch (exceptions.WrongOperationException WrongOperationException){
+            System.out.println("Please check the operation.");
+        }catch (Exception e){
+            System.out.println("There is an error during the processing, try again please.");
+        }finally{
+            System.out.println("Thank you for using our services!");
         }
+
+
+        try {
+            bankApplication.process("accountId003", 2500, "HRV");
+        }catch(exceptions.WrongAccountException WrongAccountException){
+            System.out.println("This account doesn't exist.");
+        }catch (exceptions.WrongCurrencyException WrongCurrencyException){
+            System.out.println("This account have another currency.");
+        }catch (exceptions.WrongOperationException WrongOperationException){
+            System.out.println("Please check the operation.");
+        }catch (Exception e){
+            System.out.println("There is an error during the processing, try again please.");
+        }finally{
+            System.out.println("Thank you for using our services!");
+        }
+
+
+        try {
+            bankApplication.process("accountId001", 50, "EUR");
+        }catch(exceptions.WrongAccountException WrongAccountException){
+            System.out.println("This account doesn't exist.");
+        }catch (exceptions.WrongCurrencyException WrongCurrencyException){
+            System.out.println("This account have another currency.");
+        }catch (exceptions.WrongOperationException WrongOperationException){
+            System.out.println("Please check the operation.");
+        }catch (Exception e){
+            System.out.println("There is an error during the processing, try again please.");
+        }finally{
+            System.out.println("Thank you for using our services!");
+        }
+
+
+        try {
+            bankApplication.process("accountId005", -1, "USD");
+        }catch(exceptions.WrongAccountException WrongAccountException){
+            System.out.println("This account doesn't exist.");
+        }catch (exceptions.WrongCurrencyException WrongCurrencyException){
+            System.out.println("This account have another currency.");
+        }catch (exceptions.WrongOperationException WrongOperationException){
+            System.out.println("Please check the operation.");
+        }catch (Exception e){
+            System.out.println("There is an error during the processing, try again please.");
+        }finally{
+            System.out.println("Thank you for using our services!");
+        }
+
+
+
     }
 }
